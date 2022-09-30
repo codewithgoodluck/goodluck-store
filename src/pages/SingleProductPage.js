@@ -45,6 +45,8 @@ const SingleProductPage = () => {
     return <Error />;
   }
 
+  console.log(product)
+
   const {
     name,
     price,
@@ -65,11 +67,31 @@ const SingleProductPage = () => {
           back to products
         </Link>
         <div className="product-center">
-          <ProductImages></ProductImages>
-          <div className="content">
-            <h2>{name}</h2>
-
-          </div>
+          <ProductImages images={images} ></ProductImages>
+          <section className="content">
+          <h2>{name}</h2>
+          <Stars stars={stars} reviews={reviews}></Stars>
+          <h5 className="price">{formatPrice}</h5>
+          <p className="desc">{description}</p>
+          <p className="info">
+            <span>Avalible : </span>
+            {/* if the value in stock is greater than zeero , display in stock but if its not display out off stock */}
+            {stock > 0? 'In stock' : 'out of stock'}
+          </p>
+          <p className="info">
+            <span>SKU : </span>
+            {/* if the value in stock is greater than zeero , display in stock but if its not display out off stock */}
+            {sku}
+          </p>
+          <p className="info">
+            <span>Band : </span>
+            {/* if the value in stock is greater than zeero , display in stock but if its not display out off stock */}
+            {company}
+          </p>
+          <hr></hr>
+          {/* if stock is greater thasn zero, display add to cart component */}
+          {stock > 0 && <AddToCart product={product} />}
+          </section>
         </div>
       </div>
     </Wrapper>

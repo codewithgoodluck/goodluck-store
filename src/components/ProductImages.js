@@ -1,9 +1,39 @@
-import React, { useState } from 'react'
-import styled from 'styled-components'
+import React, { useState } from "react";
+import styled from "styled-components";
 
-const ProductImages = () => {
-  return <h4>product images</h4>
-}
+const ProductImages = ({ images = [{ url: "" }] }) => {
+  // images = [] = if the images is undefinded delcare it to an empty array
+  const [main, setMain] = useState(images[0]);
+  console.log(main);
+  return (
+    <Wrapper>
+      {/* display main image */}
+      <img src={main.url} alt="main image" />
+
+      {/* display other images in the API */}
+      <div className="gallery">
+        {images.map((image, index) => {
+          return (
+            <img
+              src={image.url}
+              alt={image.filename}
+              key={index}
+              onClick={() => setMain(images[index])
+             
+              }
+                 // set an active class to the image
+                //  if the images url is equal to the main url set and active class
+              className={`${image.url === main.url ? 'active' : null}`
+              
+              }
+            />
+          );
+          // change the gallery image to main image on click by changing the index
+        })}
+      </div>
+    </Wrapper>
+  );
+};
 
 const Wrapper = styled.section`
   .main {
@@ -48,6 +78,6 @@ const Wrapper = styled.section`
       }
     }
   }
-`
+`;
 
-export default ProductImages
+export default ProductImages;
