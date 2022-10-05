@@ -29,8 +29,17 @@ useEffect(()=>{
 dispatch({type:LOAD_PRODUCTS, payload:products})
 }, [products])
 
+
+const setGridview=()=>{
+  dispatch({type:SET_GRIDVIEW})
+}
+
+const setListview=()=>{
+  dispatch({type:SET_LISTVIEW})
+}
+
   return (
-    <FilterContext.Provider value={{...state}}>
+    <FilterContext.Provider value={{...state,setGridview,setListview}}>
       {children}
     </FilterContext.Provider>
   )

@@ -4,8 +4,10 @@ import products_reducer from '../reducers/products_reducer'
 import Product from './Product'
 
 const GridView = ({products}) => {
+
   return  <Wrapper>
     <div className="products-container">
+ 
       {
       products.map((product) => {
         return <Product key={product.id} product={product} />
